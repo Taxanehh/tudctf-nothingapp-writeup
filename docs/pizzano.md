@@ -155,13 +155,13 @@ Each validateBasket allows up to six coupon codes:
 ```
 "couponCodes": ["12345","67890",...]
 ```
+{% endraw %}
 
 So a single batched request can test:
 
 ```
 aliases × 6 codes
 ```
-{% endraw %}
 
 Using around 50 aliases gives 300 coupons checked per request. At 20 requests per window, that becomes roughly 6000 coupons every 30 seconds.
 
