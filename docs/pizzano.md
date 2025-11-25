@@ -1,16 +1,23 @@
-# Pizzano's Domi - Full Writeup
+# TUDCTF 2025 Pizzano's Domi - Full Writeup (5 solves)
+
+web/Pizzano's Domi
 
 **Author**: Paul Stokreef
+
 **Solver**: Teun van der Ploeg
+
 **Platform**: TU Delft CTF 2025
+
 **Category**: web
+
 **Difficulty**: Medium-Hard
+
 
 ---
 
 ![alt text](image.png)
 
-###### fun fact: i always use exactly this picture for embedding exploits. don't know what you can do with this info, maybe also use it at some point in life. look at him, mister cool.
+###### fun fact: i always use exactly this picture for embedding exploits. don't know what you can do with this info, maybe also use it at some point in life. look at him, mister cool. -Paul
 
 ## 1. Introduction
 

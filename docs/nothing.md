@@ -1,10 +1,12 @@
-# TUDCTF 2024 – Nothing App Writeup  
+# TUDCTF 2025 – Nothing App Writeup (27 solves)
+
+reversing/Nothing App
 
 Author: Paul Stokreef 
 
-Category: Reversing
+Category: reversing
 
-Difficulty: Easy-Medium
+Difficulty: Medium
 
 ---
 
