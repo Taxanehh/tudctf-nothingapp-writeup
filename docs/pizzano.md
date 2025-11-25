@@ -160,7 +160,7 @@ Each validateBasket allows up to six coupon codes:
 
 
 ```
-"couponCodes": ["12345","67890",...]
+"couponCodes": ...
 ```
 
 So a single batched request can test:
