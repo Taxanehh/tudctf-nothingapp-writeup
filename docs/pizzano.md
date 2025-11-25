@@ -151,11 +151,10 @@ The backend processes each one independently, but Bun only sees this as a single
 
 Each validateBasket allows up to six coupon codes:
 
-{% raw %}
+
 ```
 "couponCodes": ["12345","67890",...]
 ```
-{% endraw %}
 
 So a single batched request can test:
 
