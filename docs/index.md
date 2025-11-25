@@ -1,6 +1,9 @@
 # TUDCTF 2024 – Nothing App Writeup  
+
 Author: Paul Stokreef 
+
 Category: Reversing
+
 Difficulty: Medium
 
 ---
