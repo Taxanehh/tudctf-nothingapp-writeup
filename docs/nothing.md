@@ -4,7 +4,7 @@ Author: Paul Stokreef
 
 Category: Reversing
 
-Difficulty: Medium
+Difficulty: Easy-Medium
 
 ---
 
