@@ -156,14 +156,7 @@ mutation {
 
 The backend processes each one independently, but Bun only sees this as a single HTTP request. So instead of one coupon test per request, we can perform dozens or hundreds at once.
 
-Each validateBasket allows up to six coupon codes:
-
-
-```
-"couponCodes": ...
-```
-
-So a single batched request can test:
+Each validateBasket allows up to six coupon codes, so a single batched request can test:
 
 ```
 aliases × 6 codes
@@ -179,6 +172,7 @@ This immediately reduces the expected brute forcing time for the entire code spa
 
 Here is a minimal example checking 30 coupon codes (00000–00029) using five aliases:
 
+{% raw %}
 ```http
 POST /graphql HTTP/1.1
 Host: 9cdc02c2ab20.challs.tudc.tf:30155
@@ -204,6 +198,7 @@ Content-Type: application/json
   }"
 }
 ```
+{% endraw %}
 
 Scaling this structure gives access to hundreds of coupon checks per request while remaining inside the rate limit.
 
