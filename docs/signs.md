@@ -197,7 +197,7 @@ These three strings are the 4 lines of the Minecraft sign, each containing part 
 
 ---
 
-## 7. Reconstructing the Flag
+## 8. Reconstructing the Flag
 
 Concatenating the fragments becomes:
 

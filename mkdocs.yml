@@ -1,0 +1,41 @@
+site_name: TUDCTF 2025 Writeups
+
+nav:
+  - Home: index.md
+  - Nothing: nothing.md
+  - Pizzano: pizzano.md
+  - Signs: signs.md
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: cyan
+    accent: pink
+  features:
+    - navigation.top    
+    - navigation.footer   
+    - navigation.instant
+    - content.code.copy
+    - content.code.select
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - js/particles.min.js
+  - js/particles-init.js
+
+extra_css:
+  - css/particles.css

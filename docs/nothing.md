@@ -22,7 +22,7 @@ This writeup goes step-by-step, assuming you’ve never reversed an APK before. 
 
 ---
 
-# Step 1: Setting up the APK for Reversing
+## Step 1: Setting up the APK for Reversing
 
 APK files are basically zip archives, so the first step is to unzip it:
 
@@ -55,7 +55,7 @@ Nothing obvious, so I dug deeper into the code structure.
 
 ---
 
-# Step 2: Finding the Real Logic (MainActivity)
+## Step 2: Finding the Real Logic (MainActivity)
 
 Almost all Android apps have an entry point called `MainActivity`, so that was the first file I checked.  
 Here’s the relevant part the decompiler spit out, heavily cut for readability:
@@ -87,7 +87,7 @@ If you can reproduce the logic of `d()`, you can extract the plaintext that Nonn
 
 ---
 
-# Step 3: Reverse Engineering the Decryption Function
+## Step 3: Reverse Engineering the Decryption Function
 
 Here’s the full function:
 
@@ -137,7 +137,7 @@ So to recover the plaintext, I rewrote this logic in Python.
 
 ---
 
-# Step 4: Rewriting the Decryption in Python
+## Step 4: Rewriting the Decryption in Python
 
 Below is a Python translation of the algorithm.  
 It reproduces the exact behavior of the Kotlin function:
@@ -176,7 +176,7 @@ Running it gives the plaintext immediately.
 
 ---
 
-# Step 5: The Flag
+## Step 5: The Flag
 
 The decrypted string is:
 
@@ -191,7 +191,7 @@ Even though the ciphertext started as Base64, the output was not Base64, it was 
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 This challenge is a gentle introduction to reversing Android apps. You don’t need dynamic analysis, emulators, or Frida. Everything important was:
 
@@ -208,7 +208,7 @@ If you’re new to Android reversing, the key tools to learn are:
 
 ---
 
-# Final Thoughts
+## Final Thoughts
 
 This was a fun, clean reversing challenge: no obfuscation, no JNI, no hidden classes. Just Kotlin, Base64, and some light byte-twisting. The empty black screen was a nice misdirection. All the action was happening in code that only runs once.
 
