@@ -324,21 +324,7 @@ mutation Order($input: ValidateBasketInput!) {
 
 Variables:
 
-```json
-{
-  "input": {
-    "pizzas": ["FLAG"],
-    "couponCodes": [
-      "18493",
-      "18493",
-      "18493",
-      "18493",
-      "18493",
-      "18493"
-    ]
-  }
-}
-```
+![alt text](image-2.png)
 
 This brought the total price below the required 500 euro limit, and the backend returned:
 
