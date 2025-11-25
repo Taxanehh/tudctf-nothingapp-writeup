@@ -151,13 +151,13 @@ The backend processes each one independently, but Bun only sees this as a single
 
 Each validateBasket allows up to six coupon codes:
 
-```arduino
+```
 "couponCodes": ["12345","67890",...]
 ```
 
 So a single batched request can test:
 
-```nginx
+```
 aliases × 6 codes
 ```
 
