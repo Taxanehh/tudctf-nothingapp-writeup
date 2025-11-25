@@ -326,6 +326,8 @@ Variables:
 
 ![alt text](image-2.png)
 
+(again)
+
 This brought the total price below the required 500 euro limit, and the backend returned:
 
 ```
